@@ -16,6 +16,12 @@ body {
     margin-bottom: 10px;
   }
   
+h2 {
+    font-size: 1.3rem;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
   #gameCanvas {
     background: #333;
     border: 2px solid #fff;
