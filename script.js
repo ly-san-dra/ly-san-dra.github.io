@@ -1,16 +1,15 @@
-// Récupérer le canvas et son contexte 2D
+// Récupérer le canvas
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 // Dimensions du canvas
 const width = canvas.width;
 const height = canvas.height;
-// Taille d'une case (chaque segment du serpent et la nourriture font 20px)
+// Taille d'une case
 const boxSize = 20;
-// Vitesse du jeu en millisecondes
+// Vitesse du jeu
 const gameSpeed = 800;
 
-// Le serpent : un tableau d'objets { x, y }
-// On initialise le serpent avec la tête
+// Le serpent
 let snake = [ { x: 9 * boxSize, y: 10 * boxSize } ];
 // Direction initiale du serpent
 let direction = "DOWN";
@@ -19,7 +18,7 @@ let score = 0;
 // Sélection de l'élément HTML pour afficher le score
 const scoreDisplay = document.getElementById("score");
 
-// Cette variable contien l'intervalle qui appelle régulièrement la fonction du jeu
+//l'intervalle qui appelle régulièrement la fonction du jeu
 let game;
 
 //Dessine un carré de taille boxSize sur le canvas
@@ -28,7 +27,7 @@ function drawBox(x, y, color) {
   ctx.fillRect(x, y, boxSize, boxSize);
 };
 
-//Génère une position aléatoire pour la nourriture
+//position aléatoire pour la nourriture
 function spawnFood() {
   return {
     x: Math.floor(Math.random() * (width / boxSize)) * boxSize,
@@ -52,7 +51,7 @@ function changeDirection(e) {
   } else if (e.key === "ArrowDown" && direction !== "UP") {
     direction = "DOWN"
 
-//Vérifie si la tête du serpent entre en collision avec un segment du corps
+//Vérifie si la tête du serpent entre en collision avec le corps
 function collisionWithBody(head, body) {
   for (let i = 0; i < body.length; i++) {
     if (head.x === body[i].x && head.y === body[i].y) {
@@ -62,7 +61,7 @@ function collisionWithBody(head, body) {
   return false;
 }
 
-//dessine et met à jour l'état du jeu
+//dessine et met à jour le jeu
 function drawGame() {
 //Efface le canvas
   ctx.clearRect(0, 0, width, height);
@@ -117,7 +116,7 @@ function drawGame() {
     return;
   }
 
- // On ajoute la nouvelle tête au début du tableau
+ //ajout de la nouvelle tête au début du tableau
   snake.unshift(newHead);
 
 //Dessiner le serpent
